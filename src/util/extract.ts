@@ -16,8 +16,9 @@ export function extractScripts (source: string) {
 
   let exportIndex = finalLines.findIndex(line => isExportDefault(line))
   if (exportIndex === -1) {
+    finalLines.unshift('import { defineComponent } from "vue"')
     exportIndex = finalLines.length
-    finalLines.push('export default {', '}')
+    finalLines.push('export default defineComponent({', '})')
   }
 
   // add the setup function
