@@ -15,7 +15,8 @@ export async function generateTypes (options: GenerateTypesOptions) {
 
   // Create TS files
   for (const file of componentFiles) {
-    const script = extractScripts(file)
+    const content = await fs.readFile(file, 'utf8')
+    const script = extractScripts(content)
     const targetFile = `${file}.ts`
     await fs.writeFile(targetFile, script)
     targetFiles.push(targetFile)
