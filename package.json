@@ -1,0 +1,58 @@
+{
+  "name": "vue-typegen",
+  "version": "0.1.0",
+  "description": "Generate types for Vue components libraries",
+  "license": "MIT",
+  "author": {
+    "name": "Guillaume Chau"
+  },
+  "repository": {
+    "url": "https://github.com/Akryum/vue-typegen.git",
+    "type": "git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "vue-typegen": "./bin.mjs"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -d -p tsconfig.build.json",
+    "watch": "tsc -d -w --sourceMap -p tsconfig.build.json",
+    "test": "peeky run",
+    "test:dev": "peeky open",
+    "prepublishOnly": "pnpm run test && pnpm run build"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.7",
+    "fs-extra": "^10.0.0",
+    "pathe": "^0.2.0",
+    "picocolors": "^1.0.0",
+    "sade": "^1.8.0"
+  },
+  "devDependencies": {
+    "@peeky/test": "^0.10.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^16.11.18",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "typescript": "*"
+  },
+  "files": [
+    "dist",
+    "bin.mjs"
+  ]
+}
