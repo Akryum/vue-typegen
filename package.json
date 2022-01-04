@@ -1,6 +1,6 @@
 {
   "name": "vue-typegen",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Generate types for Vue components libraries",
   "license": "MIT",
   "author": {
