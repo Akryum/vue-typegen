@@ -67,13 +67,14 @@ test('extract setup script', () => {
   expect(extractScripts(`<script setup>
 import foo from "foo"
 const bar = "bar"
-</script>`)).toBe(`export default {
+</script>`)).toBe(`import { defineComponent } from "vue"
+export default defineComponent({
 setup () {
 import foo from "foo"
 const bar = "bar"
 return {bar}
 },
-}`)
+})`)
 })
 
 test('extract mixed scripts', () => {
